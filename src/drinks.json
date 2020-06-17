@@ -1,0 +1,142 @@
+[
+    {
+        "name": "The Fighter",
+        "base": ["tequila"],
+        "ingredients": ["lemon", "agave", "ginger ale", "ginger liquer"],
+        "garnish": "cayenne",
+        "tags": ["citrus", "collins"]
+    },
+    {
+        "name": "Dark & Stormy",
+        "base": ["rum"],
+        "ingredients": ["lime", "angostura", "ginger beer"],
+        "garnish": "lime",
+        "tags": ["citrus", "collins"]
+    },
+    {
+        "name": "Bright & Sunny",
+        "base": ["whisky"],
+        "ingredients": ["lemon", "angostura", "ginger beer", "ginger liquer"],
+        "garnish": "lemon",
+        "tags": ["citrus", "collins"]
+    },
+    {
+        "name": "Babymaker",
+        "base": ["gin", "vodka"],
+        "ingredients": ["lime", "grapefruit", "ginger ale"],
+        "tags": ["citrus", "collins"]
+    },
+    {
+        "name": "Moscow Mule",
+        "base": ["gin", "vodka"],
+        "ingredients": ["lime", "ginger ale"],
+        "tags": ["citrus", "collins"]
+    },
+    {
+        "name": "Manhattan",
+        "base": ["whisky"],
+        "ingredients": ["sweet vermouth", "angostura"],
+        "garnish": "orange",
+        "tags": ["boozy"]
+    },
+    {
+        "name": "Green Point",
+        "base": ["whisky"],
+        "ingredients": ["sweet vermouth", "chartreuse", "angostura"],
+        "tags": ["boozy"]
+    },
+    {
+        "name": "Old Fashioned",
+        "base": ["whisky"],
+        "ingredients": ["sugar", "angostura"],
+        "garnish": "orange",
+        "tags": ["boozy"]
+    },
+    {
+        "name": "Gin & Tonic",
+        "base": ["gin"],
+        "ingredients": ["lime", "tonic"],
+        "garnish": "lime",
+        "tags": [ "citrus"]
+    },
+    {
+        "name": "Gimlet",
+        "base": ["gin", "vodka"],
+        "ingredients": ["lime", "syrup"],
+        "garnish": "lime",
+        "tags": [ "citrus"]
+    },
+    {
+        "name": "Tequila Smoky",
+        "base": ["tequila"],
+        "ingredients": ["elderflower", "pooter"],
+        "tags": ["boozy"]
+    },
+    {
+        "name": "Mezcal Sour",
+        "base": ["tequila"],
+        "ingredients": ["egg", "lime", "agave"],
+        "tags": ["sour", "citrus"]
+    },
+    {
+        "name": "Lavender Old Fashioned",
+        "base": ["whisky"],
+        "ingredients": ["sugar", "angostura"],
+        "garnish": "orange",
+        "tags": ["boozy" ]
+    },
+    {
+        "name": "Blueberry Smash",
+        "base": ["gin", "vodka"],
+        "ingredients": ["elderflower", "lime", "lemon", "mint", "blueberry"],
+        "garnish": "mint",
+        "tags": ["smash"]
+    },
+    {
+        "name": "Gold Rush",
+        "base": ["whisky"],
+        "ingredients": ["ginger liquer", "lemon"],
+        "garnish": "lemon",
+        "tags": ["boozy"]
+    },
+    {
+        "name": "Tequila Honey Bee",
+        "base": ["tequila"],
+        "ingredients": ["honey syrup", "lemon", "angostura"],
+        "garnish": "lemon",
+        "tags": ["boozy" ]
+    },
+    {
+        "name": "Whisky Sour",
+        "base": ["whisky"],
+        "ingredients": ["egg", "lime", "angostura"],
+        "tags": ["sour", "citrus"]
+    },
+    {
+        "name": "Champagne Cocktail",
+        "base": ["champagne"],
+        "ingredients": ["angostura", "sugar"],
+        "tags": ["wine"]
+    },
+    {
+        "name": "Margarita",
+        "base": ["tequila"],
+        "ingredients": ["cointreau", "agave", "lime"],
+        "garnish": "lime",
+        "tags": ["sour", "citrus"]
+    },
+    {
+        "name": "Poloma",
+        "base": ["tequila"],
+        "ingredients": ["grapefruit soda", "lime"],
+        "garnish": "lime",
+        "tags": ["citrus", "collins"]
+    },
+    {
+        "name": "French 75",
+        "base": ["gin", "vodka"],
+        "ingredients": ["champagne", "lemon"],
+        "garnish": "lemon",
+        "tags": ["citrus", "wine"]
+    }
+]
