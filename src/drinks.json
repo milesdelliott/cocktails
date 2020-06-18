@@ -4,139 +4,236 @@
         "base": ["tequila"],
         "ingredients": ["lemon", "agave", "ginger ale", "ginger liquer"],
         "garnish": "cayenne",
-        "tags": ["citrus", "collins"]
+        "tags": ["citrus", "collins"],
+        "buildType": "shaker"
     },
     {
         "name": "Dark & Stormy",
         "base": ["rum"],
         "ingredients": ["lime", "angostura", "ginger beer"],
         "garnish": "lime",
-        "tags": ["citrus", "collins"]
+        "tags": ["citrus", "collins"],
+        "buildType": "inGlass"
     },
     {
         "name": "Bright & Sunny",
         "base": ["whisky"],
         "ingredients": ["lemon", "angostura", "ginger beer", "ginger liquer"],
         "garnish": "lemon",
-        "tags": ["citrus", "collins"]
+        "tags": ["citrus", "collins"],
+        "buildType": "inGlass"
     },
     {
         "name": "Babymaker",
         "base": ["gin", "vodka"],
         "ingredients": ["lime", "grapefruit", "ginger ale"],
-        "tags": ["citrus", "collins"]
+        "tags": ["citrus", "collins"],
+        "buildType": "shaker"
     },
     {
         "name": "Moscow Mule",
         "base": ["gin", "vodka"],
         "ingredients": ["lime", "ginger ale"],
-        "tags": ["citrus", "collins"]
+        "tags": ["citrus", "collins"],
+        "buildType": "shaker"
     },
     {
         "name": "Manhattan",
         "base": ["whisky"],
         "ingredients": ["sweet vermouth", "angostura"],
         "garnish": "orange",
-        "tags": ["boozy"]
+        "tags": ["boozy"],
+        "buildType": "stir",
+        "instructions": [
+            {
+                "type": "add",
+                "ingredient": "whisky",
+                "amount": 1,
+                "measurement": "shot"
+            },
+            {
+                "type": "add",
+                "ingredient": "sweet vermouth",
+                "amount": 0.75,
+                "measurement": "shot"
+            },
+            {
+                "type": "add",
+                "ingredient": "angostura",
+                "amount": 4,
+                "measurement": "dashes"
+            },
+            {
+                "type": "add",
+                "ingredient": "ice",
+                "amount": 8,
+                "measurement": "cubes"
+            },
+            {
+                "type": "mix",
+                "method": "stir"
+            },
+            {
+                "type": "pour"
+            },
+            {
+                "type": "garnish",
+                "ingredient": "orange"
+            }
+        ]
     },
     {
         "name": "Green Point",
         "base": ["whisky"],
         "ingredients": ["sweet vermouth", "chartreuse", "angostura"],
-        "tags": ["boozy"]
+        "tags": ["boozy"],
+        "buildType": "stir",
+        "instructions": [
+            {
+                "type": "add",
+                "ingredient": "whisky",
+                "amount": 1,
+                "measurement": "shot"
+            },
+            {
+                "type": "add",
+                "ingredient": "sweet vermouth",
+                "amount": 0.5,
+                "measurement": "shot"
+            },
+            {
+                "type": "add",
+                "ingredient": "chartreuse",
+                "amount": 0.5,
+                "measurement": "shot"
+            },
+            {
+                "type": "add",
+                "ingredient": "angostura",
+                "amount": 4,
+                "measurement": "dashes"
+            },
+            {
+                "type": "add",
+                "ingredient": "ice",
+                "amount": 8,
+                "measurement": "cubes"
+            },
+            {
+                "type": "mix",
+                "method": "stir"
+            },
+            {
+                "type": "pour"
+            }
+        ]
     },
     {
         "name": "Old Fashioned",
         "base": ["whisky"],
         "ingredients": ["sugar", "angostura"],
         "garnish": "orange",
-        "tags": ["boozy"]
+        "tags": ["boozy"],
+        "buildType": "inGlass"
     },
     {
         "name": "Gin & Tonic",
         "base": ["gin"],
         "ingredients": ["lime", "tonic"],
         "garnish": "lime",
-        "tags": [ "citrus"]
+        "tags": [ "citrus"],
+        "buildType": "inGlass"
     },
     {
         "name": "Gimlet",
         "base": ["gin", "vodka"],
         "ingredients": ["lime", "syrup"],
         "garnish": "lime",
-        "tags": [ "citrus"]
+        "tags": [ "citrus"],
+        "buildType": "shaker"
     },
     {
         "name": "Tequila Smoky",
         "base": ["tequila"],
         "ingredients": ["elderflower", "pooter"],
-        "tags": ["boozy"]
+        "tags": ["boozy"],
+        "buildType": "inGlass"
     },
     {
         "name": "Mezcal Sour",
         "base": ["tequila"],
         "ingredients": ["egg", "lime", "agave"],
-        "tags": ["sour", "citrus"]
+        "tags": ["sour", "citrus"],
+        "buildType": "shaker"
     },
     {
         "name": "Lavender Old Fashioned",
         "base": ["whisky"],
         "ingredients": ["sugar", "angostura"],
         "garnish": "orange",
-        "tags": ["boozy" ]
+        "tags": ["boozy" ],
+        "buildType": "inGlass"
     },
     {
         "name": "Blueberry Smash",
         "base": ["gin", "vodka"],
         "ingredients": ["elderflower", "lime", "lemon", "mint", "blueberry"],
         "garnish": "mint",
-        "tags": ["smash"]
+        "tags": ["smash"],
+        "buildType": "inGlass"
     },
     {
         "name": "Gold Rush",
         "base": ["whisky"],
         "ingredients": ["ginger liquer", "lemon"],
         "garnish": "lemon",
-        "tags": ["boozy"]
+        "tags": ["boozy"],
+        "buildType": "shaker"
     },
     {
         "name": "Tequila Honey Bee",
         "base": ["tequila"],
         "ingredients": ["honey syrup", "lemon", "angostura"],
         "garnish": "lemon",
-        "tags": ["boozy" ]
+        "tags": ["boozy" ],
+        "buildType": "shaker"
     },
     {
         "name": "Whisky Sour",
         "base": ["whisky"],
         "ingredients": ["egg", "lime", "angostura"],
-        "tags": ["sour", "citrus"]
+        "tags": ["sour", "citrus"],
+        "buildType": "shaker"
     },
     {
         "name": "Champagne Cocktail",
         "base": ["champagne"],
         "ingredients": ["angostura", "sugar"],
-        "tags": ["wine"]
+        "tags": ["wine"],
+        "buildType": "inGlass"
     },
     {
         "name": "Margarita",
         "base": ["tequila"],
         "ingredients": ["cointreau", "agave", "lime"],
         "garnish": "lime",
-        "tags": ["sour", "citrus"]
+        "tags": ["sour", "citrus"],
+        "buildType": "shaker"
     },
     {
-        "name": "Poloma",
+        "name": "Paloma",
         "base": ["tequila"],
         "ingredients": ["grapefruit soda", "lime"],
         "garnish": "lime",
-        "tags": ["citrus", "collins"]
+        "tags": ["citrus", "collins"],
+        "buildType": "inGlass"
     },
     {
         "name": "French 75",
         "base": ["gin", "vodka"],
         "ingredients": ["champagne", "lemon"],
         "garnish": "lemon",
-        "tags": ["citrus", "wine"]
+        "tags": ["citrus", "wine"],
+        "buildType": "shaker"
     }
 ]
