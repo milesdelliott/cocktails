@@ -1,8 +1,12 @@
 <script>
 import {onMount} from 'svelte';
+	import { slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 import Tag from './tag'
 export let data = {};
 export let setView
+let filter = false;
+let group = false;
 $: tags = [...new Set(data.drinks.reduce((collectedTags, cocktail) => {
     return [...collectedTags, ...cocktail.tags];
 }, []))]
@@ -32,20 +36,57 @@ $: sectionedDrinks = sectioning ? filteredDrinks.main.reduce((a, drink) => {
 </script>
 
 <style>
-
+li {
+    list-style-type: none;
+    padding: 0.5rem;
+}
+h3 {
+    text-transform: capitalize
+}
+.filter, .group {
+    display: flex;
+}
+.filter ul, .group ul {
+    margin: 0;
+}
+button {
+    height: 2.5rem;
+        --color: purple;
+    --reverse: #fff;
+display: inline-block;
+padding: 0.5rem;
+color: var(--color);
+border: solid 2px var(--color);
+text-transform: capitalize;
+border-radius: 1.5rem;
+background: var(--reverse);
+cursor: pointer;
+}
+button.active {
+    background: var(--color);
+    color: var(--reverse);
+}
 </style>
-<p>Filter</p>
-<ul class="tags">
+<div class="filter">
+<button class={filter ? 'active' : 'inactive'} on:click={() => filter = !filter}>Filter</button>
+{#if filter}
+<ul class="tags" transition:slide="{{duration: 300, easing: quintOut }}">
     {#each tags as tag }
         <Tag isActive={activeTags.indexOf(tag) !== -1} on:click={handleTag(tag)} name={tag} />
     {/each}
 </ul>
-<p>Group By</p>
-<ul class="tags">
+{/if}
+</div>
+<div class="group">
+<button class={group ? 'active' : 'inactive'} on:click={() => group = !group}>Change Grouping</button>
+{#if group}
+<ul class="tags" transition:slide="{{duration: 300, easing: quintOut }}">
     {#each ['tags', 'base'] as section }
         <Tag isActive={section === sectioning} on:click={handleSection(section)} name={section} />
     {/each}
 </ul>
+{/if}
+</div>
 <ul>
 {#each Object.keys(sectionedDrinks) as drinkSection }
 <li>

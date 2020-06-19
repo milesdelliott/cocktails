@@ -4,21 +4,28 @@
 </script>
 
 <style>
-.tag {
+li {
 display: inline-block;
 margin-right: 0.5rem;
 }
-.tag .tag-button {
+button {
+    --color: purple;
+    --reverse: #fff;
 display: inline-block;
 padding: 0.5rem;
-border: solid 1px black;
+color: var(--color);
+border: solid 2px var(--color);
+text-transform: capitalize;
+border-radius: 1.5rem;
+background: var(--reverse);
+cursor: pointer;
 }
-.tag.active .tag-button {
-    background: black;
-    color: white;
+.active button {
+    background: var(--color);
+    color: var(--reverse);
 }
 </style>
 
-<li class="tag { isActive ? 'active' : 'inactive'}">
-    <button class="tag-button" on:click>{name}</button>
+<li class="{ isActive ? 'active' : 'inactive'}">
+    <button on:click>{name === 'tags' ? 'Type' : name}</button>
 </li>
