@@ -3,6 +3,7 @@ import {onMount} from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 import Tag from './tag'
+import Toggles from './toggles'
 export let data = {};
 export let setView
 let filter = false;
@@ -46,7 +47,7 @@ h3 {
 .filter, .group {
     display: flex;
 }
-.filter ul, .group ul {
+.filter ul {
     margin: 0;
 }
 button {
@@ -59,33 +60,56 @@ color: var(--color);
 border: solid 2px var(--color);
 text-transform: capitalize;
 border-radius: 1.5rem;
-background: var(--reverse);
+background: transparent;
 cursor: pointer;
+position: relative;
+}
+button:before {
+    content: "";
+    border: solid 2px var(--color);
+    border-radius: 1.5rem;
+    background: var(--color);
+    position: absolute;
+    left: -1%;
+    top:0;
+    height: 100%;
+    width: 101%;
+    transform: scale(0);
+    transform-origin: center center;
+    transition: all ease .2s;
+    z-index: -1;
 }
 button.active {
-    background: var(--color);
     color: var(--reverse);
+}
+button.active:before {
+    transform: scale(1);
+}
+.tags {
+transition: all ease .2s;
+}
+
+.tags.inactive {
+    transform: translateX(-100%);
+    
+}
+.clip {
+    overflow: hidden;
 }
 </style>
 <div class="filter">
 <button class={filter ? 'active' : 'inactive'} on:click={() => filter = !filter}>Filter</button>
-{#if filter}
-<ul class="tags" transition:slide="{{duration: 300, easing: quintOut }}">
+<div class="clip">
+<ul class={`tags ${filter ? 'active' : 'inactive'}`}>
     {#each tags as tag }
         <Tag isActive={activeTags.indexOf(tag) !== -1} on:click={handleTag(tag)} name={tag} />
     {/each}
 </ul>
-{/if}
+</div>
 </div>
 <div class="group">
-<button class={group ? 'active' : 'inactive'} on:click={() => group = !group}>Change Grouping</button>
-{#if group}
-<ul class="tags" transition:slide="{{duration: 300, easing: quintOut }}">
-    {#each ['tags', 'base'] as section }
-        <Tag isActive={section === sectioning} on:click={handleSection(section)} name={section} />
-    {/each}
-</ul>
-{/if}
+<p>Group By:</p>
+<Toggles activeVal={sectioning} onChange={handleSection} items={[ 'base', 'tags' ]} />
 </div>
 <ul>
 {#each Object.keys(sectionedDrinks) as drinkSection }
