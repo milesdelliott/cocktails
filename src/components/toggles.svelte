@@ -34,13 +34,15 @@ background: transparent;
 cursor: pointer;
 margin: 0;
 position: relative;
-transition: all ease .2s
+transition: all ease .2s;
+font-size: 0.75rem;
 }
 .active button {
     color: var(--reverse);
 }
 li:first-child:before {
     --color: purple;
+    
     position: absolute;
     top: 0;
     left: var(--offset, 0);
@@ -55,7 +57,7 @@ li:first-child:before {
 <ul class="items">
     {#each items as item, i }
         <li bind:this={refs[i]} class="{ item === activeVal ? 'active' : 'inactive'}">
-            <button on:click={setVal(item)}>{item === 'tags' ? 'Type' : item}</button>
+            <button on:click={setVal(item)}>Group by {item === 'tags' ? 'Type' : item}</button>
         </li>
     {/each}
 </ul>

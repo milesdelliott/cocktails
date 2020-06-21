@@ -2,26 +2,13 @@
 import {onMount} from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-import Tag from './tag'
-import Toggles from './toggles'
+import {activeTags, sectioning} from '../drinkStore'
 export let data = {};
 export let setView
-let filter = false;
-let group = false;
-$: tags = [...new Set(data.drinks.reduce((collectedTags, cocktail) => {
-    return [...collectedTags, ...cocktail.tags];
-}, []))]
-let activeTags = []
-let sectioning = 'base'
-const handleTag = tag => e => {
-    activeTags = activeTags.indexOf(tag) === -1 ? [...activeTags, tag] : activeTags.filter(thisTag => thisTag !== tag)
-}
-const handleSection = section => e => {
-    sectioning = section
-}
-$: filteredDrinks = activeTags.length > 0 ? {main: data.drinks.filter(d => d.tags.reduce((a,v) => a ? a : activeTags.indexOf(v) !== -1, false))} : {main: data.drinks};
-$: sectionedDrinks = sectioning ? filteredDrinks.main.reduce((a, drink) => {
-    drink[sectioning].forEach(section => {
+
+$: filteredDrinks = $activeTags.length > 0 ? {main: data.drinks.filter(d => d.tags.reduce((a,v) => a ? a : $activeTags.indexOf(v) !== -1, false))} : {main: data.drinks};
+$: sectionedDrinks = filteredDrinks.main.reduce((a, drink) => {
+    drink[$sectioning].forEach(section => {
         if (section === 'citrus') {
             return;
         }
@@ -33,91 +20,97 @@ $: sectionedDrinks = sectioning ? filteredDrinks.main.reduce((a, drink) => {
         }
     });
     return a;
-}, {}) : filteredDrinks
+}, {})
 </script>
 
-<style>
+<style lang="scss">
 li {
     list-style-type: none;
-    padding: 0.5rem;
-}
-h3 {
-    text-transform: capitalize
-}
-.filter, .group {
-    display: flex;
-}
-.filter ul {
-    margin: 0;
-}
-button {
-    height: 2.5rem;
-        --color: purple;
-    --reverse: #fff;
-display: inline-block;
-padding: 0.5rem;
-color: var(--color);
-border: solid 2px var(--color);
-text-transform: capitalize;
-border-radius: 1.5rem;
-background: transparent;
-cursor: pointer;
-position: relative;
-}
-button:before {
-    content: "";
-    border: solid 2px var(--color);
-    border-radius: 1.5rem;
-    background: var(--color);
-    position: absolute;
-    left: -1%;
-    top:0;
-    height: 100%;
-    width: 101%;
-    transform: scale(0);
-    transform-origin: center center;
-    transition: all ease .2s;
-    z-index: -1;
-}
-button.active {
-    color: var(--reverse);
-}
-button.active:before {
-    transform: scale(1);
-}
-.tags {
-transition: all ease .2s;
+    padding: 0.75rem 0;
 }
 
-.tags.inactive {
-    transform: translateX(-100%);
+h3 {
+    text-transform: capitalize;
     
+    top: 208px;
+    display: inline-block;
+    @media screen and (min-width: 560px) {
+        position: sticky;
+        margin-top: -1.6em;
+        transform: translateX(-100%);
+        text-align: right;
+    }
+
+    
+    
+    padding-right: 2rem;
+    height: 0;
 }
-.clip {
-    overflow: hidden;
+
+.all-drinks {
+    margin-bottom: 4rem;
+    padding: 0;
 }
+.section-list {
+padding: 0;
+position: relative;
+@media screen and (min-width: 560px) {
+    margin-top: -1.6em;
+}
+
+}
+.drink {
+    display: flex;
+    justify-content:  space-between;
+}
+
+a {
+    color: purple;
+     padding: 0.5em;
+     margin-left: -0.5em;
+     border: solid 2px transparent;
+     transition: all ease 0.2s;
+     border-radius: 1.5rem;
+    &:hover, &:focus {
+        border-color: currentColor;
+        text-decoration: none;
+        
+        & + .tag-list {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+.tag-list {
+    transition: all ease 0.2s;
+    visibility: hidden;
+    opacity: 0;
+    text-align: right;
+    padding: 0.5em 0;
+    color: #999;
+}
+
 </style>
-<div class="filter">
-<button class={filter ? 'active' : 'inactive'} on:click={() => filter = !filter}>Filter</button>
-<div class="clip">
-<ul class={`tags ${filter ? 'active' : 'inactive'}`}>
-    {#each tags as tag }
-        <Tag isActive={activeTags.indexOf(tag) !== -1} on:click={handleTag(tag)} name={tag} />
-    {/each}
-</ul>
-</div>
-</div>
-<div class="group">
-<p>Group By:</p>
-<Toggles activeVal={sectioning} onChange={handleSection} items={[ 'base', 'tags' ]} />
-</div>
-<ul>
+
+<ul class="all-drinks">
 {#each Object.keys(sectionedDrinks) as drinkSection }
 <li>
 <h3> {drinkSection} </h3>
-<ul>
+<ul class="section-list">
 {#each sectionedDrinks[drinkSection] as drink}
-<li><a href="://cocktails.miles.vc" on:click|preventDefault={setView('drink', {drink})}>{drink.name}</a></li>
+<li class="drink">
+    <a href="://cocktails.miles.vc" on:click|preventDefault={setView('drink', {drink})}>{drink.name}</a>
+    <span class="tag-list">
+    {#each drink.tags as tag, i}
+    
+    {#if i !== drink.tags.length - 1}
+    {tag},&nbsp;
+    {:else}
+    {tag}
+    {/if}
+    {/each}
+    </span>
+</li>
 {/each}
 </ul>
 </li>

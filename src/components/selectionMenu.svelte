@@ -1,5 +1,5 @@
 <script>
-import drinks from '../drinks.json'
+import {drinks} from '../drinkStore';
 export let setView;
 const getRandom = () => drinks[Math.floor(Math.random() * (0, drinks.length))]
 </script>
@@ -19,6 +19,7 @@ button {
     border: solid 2px purple;
     margin: 0;
     cursor: pointer;
+    border-radius: 0;
 }
 button:hover {
     color: white;
