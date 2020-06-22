@@ -36,7 +36,6 @@ h3 {
     display: inline-block;
     @media screen and (min-width: 560px) {
         position: sticky;
-        margin-top: -2.5em;
         transform: translateX(-100%);
         text-align: right;
     }
@@ -55,7 +54,7 @@ h3 {
 padding: 0;
 position: relative;
 @media screen and (min-width: 560px) {
-    margin-top: -1.6em;
+    margin-top: -2.5em;
 }
 
 }

@@ -25,7 +25,9 @@ const handleSection = section => e => {
 
 .filter, .group {
     display: flex;
+    align-items: center;
 }
+
 .filter ul {
     margin: 0;
 }
@@ -33,6 +35,7 @@ const handleSection = section => e => {
 .tags {
 transition: all ease .2s;
 overflow: visible;
+padding: 0;
 }
 
 .tags.inactive {
@@ -45,18 +48,24 @@ overflow: visible;
 .clip.active {
     overflow: visible;
 }
+.filter-button-wrapper {
+    margin-left: 2rem;
+}
 </style>
 
-<div class="filter">
-<Button active={filter} on:click={() => filter = !filter}>Filter</Button>
-<div class={`clip ${filter ? 'active' : 'inactive'}`}>
-<ul class={`tags ${filter ? 'active' : 'inactive'}`}>
-    {#each tags as tag }
-        <Tag active={$activeTags.indexOf(tag) !== -1} on:click={handleTag(tag)}>{tag}</Tag>
-    {/each}
-</ul>
-</div>
-</div>
+
 <div class="group">
-<Toggles activeVal={$sectioning} onChange={handleSection} items={[ 'base', 'tags' ]} />
+    <Toggles activeVal={$sectioning} onChange={handleSection} items={[ 'base', 'tags' ]} />
+    <div class="filter-button-wrapper">
+        <Button active={filter} on:click={() => filter = !filter}>Filter</Button>
+    </div>
+</div>
+<div class="filter">
+    <div class={`clip ${filter ? 'active' : 'inactive'}`}>
+        <ul class={`tags ${filter ? 'active' : 'inactive'}`}>
+            {#each tags as tag }
+                <Tag active={$activeTags.indexOf(tag) !== -1} on:click={handleTag(tag)}>{tag}</Tag>
+            {/each}
+        </ul>
+    </div>
 </div>

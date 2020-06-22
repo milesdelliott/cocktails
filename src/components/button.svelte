@@ -5,7 +5,6 @@
 <style>
 
 button {
-    height: 2.5rem;
         --color: purple;
     --reverse: #fff;
 display: inline-block;
@@ -20,6 +19,7 @@ position: relative;
 overflow: visible;
 z-index: 1;
 font-size: 0.75rem;
+margin: 0;
 }
 button:before {
     content: "";

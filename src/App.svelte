@@ -35,7 +35,7 @@
 
 <style lang="scss">
 	header {
-		padding: 0 1rem;
+		padding: 0 1rem 1rem;
 		background: #fcf4ff;
 		position: -webkit-sticky;
 		position: sticky;
