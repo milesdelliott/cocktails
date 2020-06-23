@@ -16,6 +16,8 @@
     padding: 2px;
     border: solid 2px var(--color);
 border-radius: 1.5rem;
+background-color: var(--background, #fcf4ff);
+z-index: 5;
 }
 li {
 display: inline-block;
@@ -57,7 +59,7 @@ li:first-child:before {
 <ul class="items">
     {#each items as item, i }
         <li bind:this={refs[i]} class="{ item === activeVal ? 'active' : 'inactive'}">
-            <button on:click={setVal(item)}>Group by {item === 'tags' ? 'Type' : item}</button>
+            <button on:click={setVal(item)}>By {item === 'tags' ? 'Type' : item}</button>
         </li>
     {/each}
 </ul>

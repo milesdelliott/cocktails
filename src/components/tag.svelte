@@ -8,6 +8,9 @@ li {
 display: inline-block;
 margin-right: 0.5rem;
 }
+li:last-child {
+    margin-right: 0;
+}
 </style>
 
 <li>

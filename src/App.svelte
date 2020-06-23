@@ -35,8 +35,9 @@
 
 <style lang="scss">
 	header {
+		--background: #fcf4ff;
 		padding: 0 1rem 1rem;
-		background: #fcf4ff;
+		background: var(--background, #fcf4ff);
 		position: -webkit-sticky;
 		position: sticky;
 		top: 0;
