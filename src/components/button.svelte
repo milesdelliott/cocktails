@@ -7,36 +7,39 @@
 <style>
 
 button {
-        --color: purple;
-    --reverse: #fff;
+        --thisColor: var(--color, purple);
+    --thisReverse: var(--reverse, #fff);
 display: inline-block;
 padding: 0.25rem 0.75rem;
-color: var(--color);
-border: solid 2px var(--color);
+color: var(--thisColor);
+border: solid 2px var(--thisColor);
 text-transform: capitalize;
-border-radius: 1.5rem;
+border-radius: var(--borderRadius, 1.5rem);
 background: transparent;
 cursor: pointer;
 position: relative;
-overflow: visible;
+overflow: hidden;
 z-index: 1;
 font-size: 0.75rem;
-margin: 0;
-
+margin: 1px;
+transition: ease all .2s;
+height: var(--buttonHeight, initial);
+width: var(--buttonWidh, initial);
 }
+
 
 button:before {
     content: "";
     border-radius: inherit;
-    background: var(--color);
+    background: var(--thisColor);
     position: absolute;
-    left: 0%;
-    top:0;
-    height: 100%;
-    width: 100%;
-    transform: scale(0);
+    left: -1%;
+    top:-3%;
+    height: 103%;
+    width: 102%;
+    transform: var(--beforeResting, scale(0));
     transform-origin: center center;
-    transition: all ease .2s;
+    transition: all ease-in .2s;
     z-index: -1;
 }
 button:after {
@@ -56,10 +59,10 @@ button:after {
     box-shadow: 0 0 0 0 rgb(51, 6, 51);
 }
 button.active {
-    color: var(--reverse);
+    color: var(--thisReverse);
 }
 button.active:before {
-    transform: scale(1);
+    transform: var(--beforeActive, scale(1));
 }
 button.active:after {
     transition: all ease-out 0.4s;
@@ -68,6 +71,10 @@ button.active:after {
 }
 button.arrow-right {
     border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+button.arrow-up{
+    border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 </style>

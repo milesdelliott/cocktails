@@ -18,6 +18,7 @@
 border-radius: 1.5rem;
 background-color: var(--background, #fcf4ff);
 z-index: 5;
+margin: 1rem;
 }
 li {
 display: inline-block;
@@ -38,6 +39,7 @@ margin: 0;
 position: relative;
 transition: all ease .2s;
 font-size: 0.75rem;
+flex: 0 0 auto;
 }
 .active button {
     color: var(--reverse);
