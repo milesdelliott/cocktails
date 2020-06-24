@@ -28,10 +28,37 @@ button:hover {
 button:first-child {
     border-right: none;
 }
+
+.icon {
+    font-size: 1.2em;
+}
+
+.icon.big {
+    font-size: 1.5em;
+}
+.random .icon {
+    animation: rotate forwards infinite 3s linear;
+    display: inline-block;
+    animation-play-state: paused;
+    padding-right: 1px;
+}
+.random:hover .icon, .random:focus .icon {
+    animation-play-state: running;
+    display: inline-block
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
 </style>
 
 <div>
-    <button on:click={setView('drinkList', {drinks})}>Browse</button>
-    <button on:click={setView('drink', {drink: getRandom()})}>Get Random</button>
+    <button on:click={setView('drinkList', {drinks})}>Browse <span class="icon big">&#8803;</span></button>
+    <button class="random" on:click={setView('drink', {drink: getRandom()})}>Random <span class="icon">&#10226;</span></button>
 </div>
 

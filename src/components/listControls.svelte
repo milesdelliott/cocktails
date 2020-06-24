@@ -83,6 +83,13 @@ width: 100%;
     z-index: -2;
     transform: translateX(100%);
 }
+.filter-button-wrapper span{
+    transition: all ease .2s;
+}
+.active .filter-button-wrapper span {
+    transform: rotate(180deg);
+    display: inline-block
+}
 </style>
 
 
@@ -97,7 +104,7 @@ width: 100%;
                 {/each}
             </ul>
             <div class="filter-button-wrapper">
-                <Button shape="arrow-right" active={filter} on:click={() => filter = !filter}>Filter</Button>
+                <Button shape="arrow-right" active={filter} on:click={() => filter = !filter}>Filter <span>&#10170;</span></Button>
             </div>
        </div>
     </div>
