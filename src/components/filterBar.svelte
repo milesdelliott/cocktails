@@ -25,18 +25,12 @@ let filter = false;
 }
 
 .tags {
-overflow: visible;
+overflow: hidden;
 position: absolute;
 --reverse: purple;
 --color: #fff;
-    padding: 2px 2px 2px 2px;
-    border: solid 2px var(--reverse);
-    border-radius: 1.5rem;
-    border-top-right-radius: 0;
-    background: var(--reverse);
      z-index: 4;
      top: 1.7rem;
-     transform: scaleY(0);
     transition: all ease .2s;
     transform-origin: top;
    right: 0;
@@ -50,18 +44,26 @@ top:0;
 left: 0;
 height: 100%;
 width: 100%;
+pointer-events: none;
 }
 
 .tags ul {
-    padding: 0;
-   
+        --reverse: purple;
+    --color: #fff;
+    padding: 2px 2px 2px 2px;
+    border: solid 2px var(--reverse);
+    border-radius: 1.2rem;
+    border-top-right-radius: 0;
+    background: var(--reverse);
+    transform: translateY(-100%);
+    transition: all ease .2s;
 }
 .tags-wrapper {
     overflow: hidden;
 }
 
-.tags.active {
-    transform: scaleY(1) ;
+.tags.active ul {
+    transform: translateY(0);
     transition-delay: 0;
 }
 
@@ -81,10 +83,10 @@ width: 100%;
 .filter-button-wrapper span {
     transition: all ease .105s;
     display: inline-block;
-    transform: rotate(-90deg);
+    transform: scaleY(1) rotate(90deg);
 }
 .active .filter-button-wrapper span {
-    transform: rotate(90deg);
+    transform: scaleY(-1) rotate(90deg);
     
 }
 </style>
